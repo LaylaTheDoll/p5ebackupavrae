@@ -1,13 +1,9 @@
-embed -title "{{name}}'s Progress!"
-
+embed -title "{{name}}'s Total Pokémon Level!"
 <drac2>
-# All of our arguments
+race = get('race', character().race)
 if not TrainerLevel:
     return err("This alias is meant for characters with the Trainer class.  Please set your class on your sheet as Trainer and `!update` to use this alias.", pm_user=False)
-race = get('race', character().race)
-args = argparse(&ARGS&)
-out = []
-n = '\n'
+args = &ARGS&
 # How much we're modding it by
 modVal = int("&1&" if len(args) > 0 else 0)
 # Create our counters if they don't exist
@@ -81,11 +77,11 @@ if args:
     out = f"""{name} adds &1& to their Total Pokemon Levels!"""
 # If no args, just display current progress
 else:
-  out = f"""{name} checks their Total Pokemon Levels."""
+  out = f"""{name} checks their Total Pokemon Levels!"""
 # Return our whole text
-return f""" -desc "{out}
+return f""" -desc "{out} 
 **Current Trainer Level:** {level}
-**Current Progress:** {character().get_cc('Total Pokemon Levels')}
+**Current Progress:** {character().get_cc('Total Pokemon Levels')}" """
 </drac2>
-
+-thumb <image> -color <color>
 -footer "Made by Zimmer#8071: !progress|!progress +\-#"
