@@ -14,64 +14,64 @@ if args:
   # Increase our progression by modVald
   character().mod_cc('Total Pokemon Levels', modVal)
   # If Progression Counter is greater than or equal to the required to level up.
-  if level == 1 :
+  if TrainerLevel == 1 :
     if character().get_cc('Total Pokemon Levels') >= 3 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 2 :
+  if TrainerLevel == 2 :
     if character().get_cc('Total Pokemon Levels') >= 6 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 3 :
+  if TrainerLevel == 3 :
     if character().get_cc('Total Pokemon Levels') >= 9 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 4 :
+  if TrainerLevel == 4 :
     if character().get_cc('Total Pokemon Levels') >= 12 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 5 :
+  if TrainerLevel == 5 :
     if character().get_cc('Total Pokemon Levels') >= 20 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 6 :
+  if TrainerLevel == 6 :
     if character().get_cc('Total Pokemon Levels') >= 24 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 7 :
+  if TrainerLevel == 7 :
     if character().get_cc('Total Pokemon Levels') >= 28 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 8 :
+  if TrainerLevel == 8 :
     if character().get_cc('Total Pokemon Levels') >= 32 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 9 :
+  if TrainerLevel == 9 :
     if character().get_cc('Total Pokemon Levels') >= 36 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 10 :
+  if TrainerLevel == 10 :
     if character().get_cc('Total Pokemon Levels') >= 50 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 11 :
+  if TrainerLevel == 11 :
     if character().get_cc('Total Pokemon Levels') >= 55 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 12 :
+  if TrainerLevel == 12 :
     if character().get_cc('Total Pokemon Levels') >= 60 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 13 :
+  if TrainerLevel == 13 :
     if character().get_cc('Total Pokemon Levels') >= 65 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 14 :
+  if TrainerLevel == 14 :
     if character().get_cc('Total Pokemon Levels') >= 70 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 15 :
+  if TrainerLevel == 15 :
     if character().get_cc('Total Pokemon Levels') >= 90 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 16 :
+  if TrainerLevel == 16 :
     if character().get_cc('Total Pokemon Levels') >= 96 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 17 :
+  if TrainerLevel == 17 :
     if character().get_cc('Total Pokemon Levels') >= 102 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 18 :
+  if TrainerLevel == 18 :
     if character().get_cc('Total Pokemon Levels') >= 108 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 19 :
+  if TrainerLevel == 19 :
     if character().get_cc('Total Pokemon Levels') >= 114 :
       out = f"""{name} has leveled up! Be sure to `!update` and `!level`!"""
-  if level == 20 :
+  if TrainerLevel == 20 :
     out = f"""{name} reached max level! Be sure to check `!prestige`!"""
   else:
     out = f"""{name} adds &1& to their Total Pokemon Levels!"""
