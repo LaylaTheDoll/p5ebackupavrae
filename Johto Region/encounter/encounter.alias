@@ -1,9 +1,9 @@
 embed <drac2>
 args = argparse(&ARGS&)
-table = load_json(get_gvar("5c1e2ea3-f22c-49d9-be8d-60701e1d08c1")) if args.get('fiore') else load_json(get_gvar("76c49219-fdbf-4d9d-9221-8a9e4ec54ce3"))
-nature_list = load_json(get_gvar("d8f15aca-b785-4a65-801e-ee2a27b93d6a"))
+table = load_json(get_gvar("570590f8-fcce-464e-81c4-44ca2a1a2168")) if args.get('fiore') else load_json(get_gvar("5ec60744-ce4a-451f-9354-8bd5ce78fb23"))
+nature_list = load_json(get_gvar("6df1481a-e265-468e-901a-e39ae480928a"))
 help = not args or args.get('?') or args.get('help')
-help_text = get_gvar("63b96309-7bc9-40ff-bde5-d8308aba0884")
+help_text = get_gvar("718bdcda-260c-47c0-b0ab-d6f7cf356b22")
 perception = args.last('per', type_=int)
 crit = args.get('crit')
 route = "Route " + args.last ('route') if args.get('route') else ''
@@ -53,7 +53,7 @@ if help:
     out.append(help_text)
     out.append(f'''-f "Available Routes|{', '.join([x for x in table.Routes])}" ''')
     out.append(f'''-f "Available Caves|{', '.join([x for x in table.Caves])}" ''')
-    out.append('-footer "v. 3.1 Developed by @R to the Ichie#6193. Special thanks to the Carpenters for all the tables you built!"')
+    out.append('-footer "v. 3.2 Developed by @R to the Ichie#6193 and Edited by @Zimmer#8071. Thanks to the Carpenters who built the tables!"')
     return " ".join(out)
     break
 else:

@@ -53,7 +53,7 @@ if help:
     out.append(help_text)
     out.append(f'''-f "Available Routes|{', '.join([x for x in table.Routes])}" ''')
     out.append(f'''-f "Available Caves|{', '.join([x for x in table.Caves])}" ''')
-    out.append('-footer "v. 3.1 Developed by @R to the Ichie#6193. Special thanks to the Carpenters for all the tables you built!"')
+    out.append('-footer "v. 3.2 Developed by @R to the Ichie#6193 and Edited by @Zimmer#8071. Thanks to the Carpenters who built the tables!"')
     return " ".join(out)
     break
 else:
