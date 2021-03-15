@@ -1,0 +1,85 @@
+<drac2>
+args = &ARGS&
+ch = character()
+out = []
+gvar = load_json(get_gvar("5eed7634-7526-4b25-86f2-38677ecc27b5"))
+ignore = "-i" in args
+attack_name = ""
+cc = ""
+if not args:
+    return f'attack list'
+for a in ch.attacks:
+    if args[0].lower() == a.name.lower():
+        attack_name = a.name
+        break
+if not attack_name:
+    for a in ch.attacks:
+        if args[0].lower() in a.name.lower():
+            attack_name = a.name
+            break
+if not attack_name:
+    err("You do not know that attack.")
+args.remove(args[0])
+for c in ch.consumables:
+    if attack_name == c.name or attack_name + " PP" == c.name:
+        cc = c.name
+        break
+if not cc:
+    err(f"You do not have a PP counter set up for {attack_name}")
+if ch.cc(cc).value < 1 or ch.cc(cc).value < 2 and "pressure" in args:
+    err(f'Your {attack_name} attack is out of PP!')
+ch.mod_cc(cc, -1)
+pressure = "pressure" in args
+if pressure:    
+    ch.mod_cc(cc, -1)
+    args.remove("pressure")
+    out.append('-f "Pressure|Any move targeting this Pokémon directly costs an additional 1 PP."')
+c = combat()
+if c and not ignore:
+    if c.me.get_effect("Paralyzed"):
+        paralyzed_roll = vroll("1d4")
+        out.append(f'-f "Paralyzed - {paralyzed_roll}|{gvar.Paralyzed}"')
+        if paralyzed_roll.total == 1:
+            ch.mod_cc(cc, 1)
+            if pressure:
+                ch.mod_cc(cc, 1)
+            out = []
+            out.append(f'-title "{name} is paralyzed and cannot move!"')
+            out.append(f'-f "Paralyzed - {paralyzed_roll} | {gvar.Paralyzed}"')
+            return f'embed {" ".join(out)} -thumb {image} -color {color}'
+    if c.me.get_effect("Confused"):
+        confused_roll = vroll('1d20')
+        out.append(f'-f "Confused - {confused_roll}|{gvar.Confused}"')
+        if confused_roll.total <= 10:
+            ch.modify_hp(-proficiencyBonus)
+            out = []
+            out.append(f'-title "{name} tries to attack with {attack_name}!"')
+            out.append(f'-desc "Confused - {confused_roll} | {gvar.Confused}"')
+            out.append(f'-f "PP Remaining|{ch.cc_str(cc)}"')
+            if c.me.get_effect("Paralyzed"):
+                out.append(f'-f "Paralyzed - {paralyzed_roll}|{gvar.Paralyzed}"')
+            out.append(f'-footer "{name}: <{ch.hp_str()} HP> (-{proficiencyBonus})"')
+            out.append(f'-phrase "{name} hurt itself in its confusion!"')
+            return f'embed {" ".join(out)} -thumb {image} -color {color}'
+        elif confused_roll.total >= 16:
+            c.me.remove_effect("Confused")
+            out.append(f'-phrase "{name} snapped out of confusion!"')
+    if c.me.get_effect("Burned"):
+        out.append(f'-f "Burned|{gvar.Burned}"')
+        ch.modify_hp(-proficiencyBonus)
+        out.append(f'-f "{name}: <{ch.hp_str()} HP> (-{proficiencyBonus})"')
+    if c.me.get_effect("Poisoned"):
+        out.append('dis')
+        ch.modify_hp(-proficiencyBonus)
+        out.append(f'-f "Poisoned|{gvar.Poisoned}"')
+        out.append(f'-f "{name}: <{ch.hp_str()} HP> (-{proficiencyBonus})"')
+    if c.me.get_effect("Proned"):
+        out.append('dis sadv')
+        out.append(f'-f "Proned|{gvar.Proned}"')
+    if c.me.get_effect("Flinched"):
+        out.append('dis sadv')
+        out.append(f'-f "Flinched|{gvar.Flinched}"')
+out.append(f'-f "PP Remaining|{ch.cc_str(cc)}"')
+out.append(" ".join(args))
+return f'attack "{attack_name}" {" ".join(out)}'
+</drac2>

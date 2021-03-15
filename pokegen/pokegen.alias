@@ -1,0 +1,51 @@
+embed <drac2>
+args= [x.title() for x in &ARGS&]
+gvar=load_json(get_gvar("fc6518e3-18f5-417e-9824-8dfe65fd9a5d"))
+out=[]
+out.append('-title "Generating a new Pokemon..."')
+if 'Help' in args or '?' in args or not args:
+    out.append(f'-desc "Running `{ctx.prefix}{ctx.alias} random` will generate a Pokemon generated from a random Difficulty and Habitat. You can type in a difficulty and/or habitat after `{ctx.prefix}{ctx.alias}` to narrow the results. You can add `day` or `night` to specify a time or just let the alias choose randomly. Add `-shiny ##` to change the percentage rate for a shiny Pokemon (i.e. `-shiny 10` for a 10% drop rate.)"')
+    out.append(f'-f "__Available Difficulties:__|{", ".join([x for x in gvar.Day.keys()])}"')
+    out.append(f'-f "__Available Habitats:__|{", ".join([x for x in gvar.Day.Simple.keys()])}"')
+else:
+    if 'Day' in args:
+        dayNight = "Day"
+    elif 'Night' in args:
+        dayNight = "Night"
+    else:
+        dayNight = ['Day', 'Night'][randint(2)-1]
+    diffList =  [x for x in gvar[dayNight].keys()]
+    for x in diffList:
+        if x in args:
+            diff = x
+            break
+        else:
+            diff = diffList[randint(len(diffList))-1]
+    habList = [x for x in gvar[dayNight][diff].keys()]
+    for x in habList:
+        if x in args:
+            hab = x
+            break
+        else:
+            hab = habList[randint(len(habList))-1]
+    PKMN = [x for x in gvar[dayNight][diff][hab]][randint(len(gvar[dayNight][diff][hab]))-1]
+    shinyRate = argparse(args).last('Shiny') or 1
+    shiny = vroll('1d100')
+    shiny = shiny.total <= int(shinyRate)
+    out.append(f'''-desc "Your {dayNight}time {diff} {hab} Pokemon is a **{'SHINY ' if shiny else ''}{PKMN}**!\nIt has the following attributes:"''')
+    genderRate=gvar[dayNight][diff][hab][PKMN]
+    if genderRate == 200:
+        gender = "Genderless"
+    else:
+        gender = vroll('1d100')
+        gender = "Male" if gender.total <= genderRate else "Female"
+    out.append(f'-f "Gender|{gender}"')
+    nature = vroll('1d20')
+    nature = load_json(get_gvar("d8f15aca-b785-4a65-801e-ee2a27b93d6a"))[nature.total-1]
+    out.append(f'-f "Nature|{nature}"')
+    ability = vroll('1d2')
+    out.append(f'-f "Ability|{"First" if ability.total == 1 else "Second (if it has one)"}"')
+    out.append('-thumb "https://i0.wp.com/www.alphr.com/wp-content/uploads/2016/07/whos_that_pokemon.png"')
+    out.append(f'-footer "{ctx.prefix}{ctx.alias} | Developed by @R to the Ichie#6193 for the Pokemon5e system"')
+return " ".join(out)
+</drac2>

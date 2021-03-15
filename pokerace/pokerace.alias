@@ -1,0 +1,71 @@
+embed <drac2>
+args = &ARGS&
+c = combat().current
+cge = c.get_effect
+mod = c.stats.get_mod
+speed = int(cge('Speed').desc)
+if cge('Slowed'):
+    speed = speed//2
+    c.remove_effect('Slowed')
+if cge('Exhausted'):
+    speed = 0
+    c.remove_effect('Exhausted')
+progress = int(cge('Race Progress').desc)
+boosts = int(cge('Boosts').desc.count('🥕'))
+booster = ''
+if args:
+    booster = 'b' in args[0] or 'B' in args[0]
+DC = 15-max(mod('str'),mod('dex'))
+boosted = booster and boosts
+exhausted = 0
+out=[]
+tally=0
+if speed > 0:
+    out.append(f'-title "{c.name} races around the track!"')
+    raceRoll = vroll("1d20")
+    tally = 0
+    if raceRoll.result.crit==1:
+        tally = speed + max(c.stats.strength, c.stats.dexterity)
+    elif raceRoll.total >= DC:
+        tally = speed
+    elif raceRoll.total == 1:
+        tally = 0
+    else:
+        tally = speed//2
+    if boosted:
+        if tally:
+            tally += max(c.stats.strength, c.stats.dexterity)
+        c.add_effect('Boosts', '', duration=-1, desc='🥕'*(boosts-1))
+        out.append(f'-desc "**DC:** {DC} {raceRoll.result}\n{c.name} uses a boost to add an extra {max(c.stats.strength, c.stats.dexterity)} feet to their speed!"')
+        if cge("Shake and Bake!"):
+            conSave = c.save('con', True)
+        else:
+            conSave = c.save('con')
+        if not (boosts-1):
+            exhausted = 1
+        if exhausted:
+            if conSave.total < 15:
+                c.add_effect('Exhausted','', duration=-1)
+                out.append(f'''-f "Constitution Save (DC 15): {conSave}|{c.name} is exhausted and needs to take a break!"''')
+            else:
+                out.append(f'''-f "Constitution Save (DC 15): {conSave}|{c.name} is still holding on!"''')
+        elif conSave.total < 15:
+            c.add_effect('Slowed','', duration=-1)
+            out.append(f'-f "Constitution Save (DC 15): {conSave}|{c.name} is too tired to keep racing at full speed!\nTheir movement speed is cut in half for the next turn."')
+        else:
+            out.append(f'''-f "Constitution Save (DC 15): {conSave}|{c.name} is holding steady!"''')
+    else:
+        out.append(f'-desc "**DC:** {DC} {raceRoll.result}"')
+        if not boosted:
+            if boosts < max(mod('con'),1):
+                c.add_effect('Boosts', '', duration=-1, desc='🥕'*(boosts+1))
+    progress += tally
+else:
+    out.append(f'-title "{c.name} is catching their breath."')
+c.add_effect('Race Progress','',duration=-1,desc=f'{progress}')
+out.append(f'-f "Lap # {combat().round_num}:|{c.name} moves forward {tally if tally else "0"} feet!"')
+out.append(f'''-f "Progress:|{cge('Race Progress').desc} feet|inline"''')
+out.append(f'''-f "Boosts / Movement Speed:|{cge('Boosts').desc} / {cge('Speed').desc} feet|inline"''')
+return " ".join(out)
+</drac2>
+{{f"-thumb 'https://hugelolcdn.com/i/190943.gif'" if c.name != character().name else f"-thumb {image}"}} -color <color>
