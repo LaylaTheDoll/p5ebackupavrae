@@ -1,0 +1,23 @@
+{
+  "Pokeball": ["0", "+0 to Capture Rolls","https://cdn.bulbagarden.net/upload/7/79/Dream_Pok%C3%A9_Ball_Sprite.png"],
+  "Great Ball": ["5", "+5 to Capture Rolls","https://cdn.bulbagarden.net/upload/b/bf/Dream_Great_Ball_Sprite.png"],
+  "Ultra Ball": ["10", "+10 to Capture Rolls","https://cdn.bulbagarden.net/upload/a/a8/Dream_Ultra_Ball_Sprite.png"],
+  "Hyper Ball": ["20", "+20 to Capture Rolls","https://cdn.bulbagarden.net/upload/f/f6/Dream_Cherish_Ball_Sprite.png"],
+  "Nest Ball": ["5", "+5 to Capture Rolls against Pokemon level 5 or below","https://cdn.bulbagarden.net/upload/8/8c/Dream_Nest_Ball_Sprite.png"],
+  "Level Ball": ["5", "+5 to Capture Rolls if active Pokemon is a higher level than target","https://cdn.bulbagarden.net/upload/1/19/Dream_Level_Ball_Sprite.png"],
+  "Timer Ball": ["0", "+1 to Capture Rolls for each round of combat that has passed before throwing (Max +10)","https://cdn.bulbagarden.net/upload/f/f0/Dream_Timer_Ball_Sprite.png"],
+  "Luxury Ball": ["5", "+5 to Capture Rolls. Sets Loyalty level to +1 after catch","https://cdn.bulbagarden.net/upload/7/7e/Dream_Luxury_Ball_Sprite.png"],
+  "Repeat Ball": ["10", "+10 to Capture Rolls against species already caught by the user","https://cdn.bulbagarden.net/upload/d/df/Dream_Repeat_Ball_Sprite.png"],
+  "Net Ball": ["10", "+10 to Capture Rolls against Bug or Water type Pokemon","https://cdn.bulbagarden.net/upload/a/a0/Dream_Net_Ball_Sprite.png"],
+  "Dive Ball": ["10", "+10 to Capture Rolls while fishing or underwater","https://cdn.bulbagarden.net/upload/9/9a/Dream_Dive_Ball_Sprite.png"],
+  "Dusk Ball": ["10", "+10 to Capture Rolls at night or in dark places like caves","https://cdn.bulbagarden.net/upload/5/59/Dream_Dusk_Ball_Sprite.png"],
+  "Moon Ball": ["10", "+10 to Capture Rolls against Pokemon that evolve with Moon Stone","https://cdn.bulbagarden.net/upload/2/22/Dream_Moon_Ball_Sprite.png"],
+  "Heal Ball": ["5", "+5 to Capture Rolls. Restores caught Pokemon's health and cures all status effects","https://cdn.bulbagarden.net/upload/0/0e/Dream_Heal_Ball_Sprite.png"],
+  "Quick Ball": ["15", "+15 to Capture Rolls only if used in the first round of combat","https://cdn.bulbagarden.net/upload/9/90/Dream_Quick_Ball_Sprite.png"],
+  "Love Ball": ["15", "+15 to Capture Rolls against target that is the opposite gender as your Active Pokemon","https://cdn.bulbagarden.net/upload/9/94/Dream_Love_Ball_Sprite.png"],
+  "Heavy Ball": ["15", "+15 to Capture Rolls against Pokemon of size Medium or bigger","https://cdn.bulbagarden.net/upload/b/bb/Dream_Heavy_Ball_Sprite.png"],
+  "Master Ball": ["0", "Automatic Success on Capture Roll","https://cdn.bulbagarden.net/upload/9/95/Dream_Master_Ball_Sprite.png"],
+  "Fast Ball": ["15", "+15 to Capture Rolls against Pokemon with primary speed higher than 30ft","https://cdn.bulbagarden.net/upload/4/44/Dream_Fast_Ball_Sprite.png"],
+  "Lure Ball": ["10", "+10 to Capture Rolls while fishing","https://cdn.bulbagarden.net/upload/b/bd/Dream_Lure_Ball_Sprite.png"],
+  "Friend Ball": ["0", "+0 to Capture Rolls. Sets Loyalty to +1 after catch","https://cdn.bulbagarden.net/upload/7/7a/Dream_Friend_Ball_Sprite.png"]
+}

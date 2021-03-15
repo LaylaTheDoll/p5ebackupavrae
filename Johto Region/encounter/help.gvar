@@ -5,7 +5,7 @@
 `land` or `water` - will default to land if neither one is entered
 `-shiny ##` to change the shiny rate (for special events, defaults to 5)
 `flip` to access the special reversed tables for weekends
-`crit` to show you the options for a natural 20 on a perception roll.  You do **not** need to enter the `-per ##` value for this (but it won't mess anything up if you do)
+`crit` to show you the options for a natural 20 on a perception roll.
 `npc` to roll a random trainer encounter from the area provided.
 `day`/`night` to override the built-in time"
 `fiore` to override the base table with Fiore's
