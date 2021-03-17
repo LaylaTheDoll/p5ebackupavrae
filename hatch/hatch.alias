@@ -2,7 +2,7 @@ embed <drac2>
 a,gr=&ARGS&,get_raw()
 args=argparse(a)
 out=[]
-help=get_gvar("9c2adfb1-21f8-4000-bedf-3ad5fc90d136")
+help=get_gvar("3073edd4-faca-4d65-af70-1c950232e0ee")
 inc=''
 incText=inc
 breeder = 'Breeder' in get('subclass',[]) and level >= 5

@@ -1,5 +1,5 @@
 embed <drac2>
-table = load_json(get_gvar("461da1e3-e1c9-42e9-ac70-f458a5935780"))
+table = load_json(get_gvar("cfd9e79d-98fc-404e-9354-b55cdf376cb3"))
 args = &ARGS&
 rr = argparse(args).last('rr') or 1
 out = []

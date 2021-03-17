@@ -24,6 +24,6 @@ out.append('-f "Rules|The first Pokemon to cross the finish line is the winner!\
 out.append(f'-f "Instructions|`{ctx.prefix}{ctx.alias}`to run another lap!\n`{ctx.prefix}{ctx.alias} boost` to give your Pokemon a boost!\n`{ctx.prefix}{ctx.alias} end` to finish the race!"')
 if not combat():
     out.append(f'-f "**WARNING**|Make sure you start initiative and have all racers join before starting with `{ctx.prefix}init begin` and `{ctx.prefix}init join` or this alias will not work!"')
-out.append('-footer "Developed by @R to the Ichie#6193"')
+out.append('-footer "Developed by @R to the Ichie#6193 and maintained by Zimmer#8071"')
 return " ".join(out)
 </drac2>

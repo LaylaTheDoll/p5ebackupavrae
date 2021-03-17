@@ -1,0 +1,5 @@
+embed -title "{{name}} rolls for their daily Training!"
+
+-desc "{{name}} trains their best. `{{}}` combat experience for their training."
+-f "{{get_cc("Experience")}} XP Total"
+-thumb <image> -color <color>
